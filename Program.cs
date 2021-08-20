@@ -26,23 +26,23 @@ namespace LuaLibrary
 
             float damage = 500f;
             float dmg_result;
-            float DAMAGE_MIN_PERCENT = (float)LuaCode.GetLuaGlobal("DAMAGE_MIN_PERCENT").Number;
-            float DAMAGE_MAX_PERCENT = (float)LuaCode.GetLuaGlobal("DAMAGE_MAX_PERCENT").Number;
+            float DAMAGE_MIN_PERCENT = (float)LuaCode.GetLuaGlobal("EXTRAPOLATE_MIN_PERCENT").Number;
+            float DAMAGE_MAX_PERCENT = (float)LuaCode.GetLuaGlobal("EXTRAPOLATE_MAX_PERCENT").Number;
 
             var bullets = new Dictionary<BombType, int>();
 
-            bullets.Add((BombType)currentAmmo, LuaLibrary.LuaCode.ExecuteLuaFunction("GetAmmoBulletsByLevel", Enum.GetName(typeof(BombType), currentAmmo), GameController.GameCurrentLevel.ToString()).Integer);
+            //bullets.Add((BombType)currentAmmo, LuaLibrary.LuaCode.ExecuteLuaFunction("GetAmmoBulletsByLevel", Enum.GetName(typeof(BombType), currentAmmo), GameController.GameCurrentLevel.ToString()).Integer);
 
             foreach (var bullet in bullets)
             {
 
             }
 
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    dmg_result = random.Next((int)(damage * DAMAGE_MIN_PERCENT), (int)(damage * (DAMAGE_MAX_PERCENT)));//UnityEngine.Random.Range(damage*DAMAGE_MIN_PERCENT, damage*DAMAGE_MAX_PERCENT);
-            //    Console.WriteLine(dmg_result);
-            //}
+            for (int i = 0; i < 10; i++)
+            {
+                dmg_result = random.Next((int)(damage * DAMAGE_MIN_PERCENT), (int)(damage * (DAMAGE_MAX_PERCENT)));//UnityEngine.Random.Range(damage*DAMAGE_MIN_PERCENT, damage*DAMAGE_MAX_PERCENT);
+                Console.WriteLine(dmg_result);
+            }
 
             //ammo.effects.Add(Effects.poison, new Ammo.AmmoEffect());
 

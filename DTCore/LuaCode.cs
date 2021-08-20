@@ -136,8 +136,8 @@ namespace LuaLibrary
 
 		private static void ImportBaseFiles(Script lua)
 		{
-			lua.DoFile("tablelib");
-			lua.DoFile("luafunctions");
+			lua.DoFile("tablelib.lua");
+			lua.DoFile("luafunctions.lua");
 		}
 
 		private static string JoinParameters(params string[] parameters)
