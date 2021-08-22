@@ -2,6 +2,17 @@ using MoonSharp.Interpreter;
 using System.Collections;
 using System.Collections.Generic;
 
+public enum BombType { Bomb, IceBomb, PoisonBomb, TeleBomb, Inferno, MegaBomb }
+
+public struct KeyVal<TKey, TVal>
+{
+    public TKey Key { get; set; }
+    public TVal Value { get; set; }
+    public KeyVal(TKey key, TVal val) { this.Key = key; this.Value = val; }
+    public void Set(TKey key, TVal val) { this.Key = key; this.Value = val; }
+    public KeyVal<TKey, TVal> Get() { return this; }
+}
+
 namespace LuaEntity
 {
     public class Bird
@@ -27,6 +38,13 @@ namespace LuaEntity
 
         public Dictionary<Effects, AmmoEffect> effects { get; set; }
         //public Dictionary<Effects, Dictionary<string, int>> effects { get; set; }
+    }
+
+    public class Shipload
+    {
+        public BombType bombType {get; set;}
+
+        public int amount {get;set;}
     }
 }
 

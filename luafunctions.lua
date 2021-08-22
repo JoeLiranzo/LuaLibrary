@@ -35,3 +35,13 @@ end
 function GetBirdDroppedItems()
     
 end
+
+function GetShipLoads()
+    local tAmmoKeys = {}
+    for index, value in pairs(AMMO.AMMO) do
+        local tAmmoValue = math.random(1, 5)
+        table.insert(tAmmoKeys, {bombType = index, amount= tAmmoValue})
+        --tAmmoKeys[index] = tAmmoValue
+    end
+    return tAmmoKeys
+end

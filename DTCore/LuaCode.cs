@@ -107,6 +107,26 @@ namespace LuaLibrary
 
 			return lua.DoString("return " + functionName + "()");
 		}
+		
+		public static T ExecuteLuaFunction<T>(string functionName)
+		{
+			Script lua = new Script();
+			ImportBaseFiles(lua);
+
+			var result_value = LuaReader.Read<T>(lua.DoString("return " + functionName + "()"));
+
+			return result_value;
+		}
+
+		public static List<T> ExecuteLuaFunctionList<T>(string functionName)
+		{
+			Script lua = new Script();
+			ImportBaseFiles(lua);
+
+			var result_table = LuaReader.Read<List<T>>(lua.DoString("return " + functionName + "()"));
+
+			return result_table;
+		}
 
 		public static void ExecuteLuaFunction(string functionName, out DynValue dynValue, params string[] parametersList)
 		{
